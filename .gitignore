@@ -1,0 +1,5 @@
+*.pdf
+.vscode
+__pycache__
+*.yaml
+*.json

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "board-cutting"
+version = "0.1.0"
+description = "Guilliotine cutting problem solving using dynamic programming"
+authors = ["dingobar <mmorset@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+opcut = "^0.4.9"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
