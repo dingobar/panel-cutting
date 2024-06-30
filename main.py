@@ -22,31 +22,19 @@ def read_input_data():
         next(reader)  # skip header
 
         for row in reader:
-            x, y, n = (int(r) for r in row)
+            name, x, y, n = tuple(row)
             for _ in range(int(n)):
-                out.append([x, y])
+                out.append([f"{name} ({x}x{y})", int(x), int(y)])
 
     return out
-
-
-def get_running_number_generator():
-    def running_number() -> Generator[int, None, None]:
-        n = 0
-        while True:
-            n = n + 1
-            yield str(n)
-
-    return running_number()
 
 
 if __name__ == "__main__":
     method = Method.FORWARD_GREEDY_NATIVE
 
-    panel_id = get_running_number_generator()
-    panels = [Panel(next(panel_id), 1220, 2440) for _ in range(10)]
-    item_id = get_running_number_generator()
+    panels = [Panel("lang", 100, 3310), Panel("kort", 100, 1480)]
     items = [
-        Item(next(item_id) + f" ({x}x{y})", x, y, True) for x, y in read_input_data()
+        Item(name, x, y, True) for name, x, y in read_input_data()
     ]
     result = calculate(method, Params(1, True, panels, items))
     with Path("out.pdf").open("wb") as f:
